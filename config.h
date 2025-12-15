@@ -45,7 +45,7 @@ const byte SOLENOID = 2;
 /*Sensor state indicator logic*/
 const bool IR_ACTIVE_LOW = false;
 const bool TOUCH_ACTIVE_LOW = false;
-const bool SOLENOID_ACTIVE_HIGH = false;
+const bool SOLENOID_ACTIVE_LOW = true;
 
 /*Time parameters - type dependent on tNow parameter in*/
 const unsigned long CLOCK_TOLERANCE = 100UL;          //tolerance range if timing function jumps? would subsequent calls be resolved?
