@@ -12,16 +12,32 @@ enum Mode
 	MODE_B,
 };
 
+struct TTLState
+{
+	byte pin;
+	byte mode;
+	bool state;
+	bool pulseState;
+	unsigned long tTTLon;
+	unsigned long tPulseon;
+	unsigned long duration;
+	unsigned long pulseWidth;
+	unsigned long pulsePeriod;
+};
+
 struct RuntimeState
 {
 	byte led_pin;
-	bool runTimeFlag;
+	bool runtimeFlag;
+	bool inputTriggerExists;
 	unsigned long tNow;
 	unsigned long tLast;
 	unsigned long tStart;
 	unsigned long tRuntimeStart;
 	unsigned long duration;
 	unsigned long delay;
+	TTLState* inputTrigger;
+	TTLState* outputTrigger;
 };
 
 struct BlinkLEDState
@@ -38,6 +54,7 @@ struct IRState
 {
 	byte pin;
 	byte side;
+	byte proxyLEDPin;
 	bool currentRead;
 	bool lastRead;
 	bool currentPersistant;
@@ -48,6 +65,8 @@ struct IRState
 	bool connectEvent;
 	unsigned long tStart;
 	unsigned long tOff;
+	unsigned long ttlPulsePeriod;
+	TTLState* outputTrigger;
 };
 
 struct TouchState
@@ -61,6 +80,8 @@ struct TouchState
 	bool clearEvent;
 	unsigned long tStart;
 	unsigned long tOff;
+	unsigned long ttlPulsePeriod;
+	TTLState* outputTrigger;
 };
 
 struct SolenoidState
@@ -71,6 +92,8 @@ struct SolenoidState
 	unsigned long tOpen;
 	unsigned long tClose;
 	unsigned long duration;
+	unsigned long ttlPulsePeriod;
+	TTLState* outputTrigger;
 };
 
 struct LinearActuatorState
