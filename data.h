@@ -17,6 +17,7 @@ struct TTLState
 	byte pin;
 	byte mode;
 	bool state;
+	bool detect;
 	bool pulseState;
 	unsigned long tTTLon;
 	unsigned long tPulseon;
@@ -57,8 +58,6 @@ struct IRState
 	byte proxyLEDPin;
 	bool currentRead;
 	bool lastRead;
-	bool currentPersistant;
-	bool lastPersistant;
 	bool inBreak;
 	bool breakEvent;
 	bool breakEventMutable;
